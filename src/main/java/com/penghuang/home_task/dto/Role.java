@@ -1,5 +1,8 @@
 package com.penghuang.home_task.dto;
 
+/**
+ * Role class.
+ */
 public class Role {
     private String roleName;
 

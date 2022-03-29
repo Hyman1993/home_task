@@ -4,7 +4,6 @@ import com.penghuang.home_task.dto.User;
 import com.penghuang.home_task.entity.Users;
 import com.penghuang.home_task.exception.SystemException;
 import com.penghuang.home_task.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -49,7 +48,7 @@ public class UserController {
 
     // for testing
     /**
-     * delete user.
+     * get users.
      * @return
      */
     @GetMapping("/users")

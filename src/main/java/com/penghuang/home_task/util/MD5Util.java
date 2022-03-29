@@ -5,6 +5,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5Util {
 
+    /**
+     * encrypted password with MD5.
+     * @param str
+     * @return
+     */
     public static String encryption(String str){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

@@ -29,9 +29,7 @@ public class Users {
         if(!isUserExist(user)) {
             throw new SystemException("delete user failed, because the user doesn't exist!" + ", username:" + user.getName() );
         }
-        users.removeIf(t -> {
-            return user.getName().equals(t.getName());
-        });
+        users.removeIf(t -> user.getName().equals(t.getName()));
     }
 
     /**
@@ -40,9 +38,7 @@ public class Users {
      * @return if exist,return ture, otherwise return false
      */
     private static boolean isUserExist(User user) {
-        return users.stream().anyMatch(t -> {
-            return user.getName().equals(t.getName());
-        });
+        return users.stream().anyMatch(t -> user.getName().equals(t.getName()));
     }
 
 

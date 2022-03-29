@@ -5,6 +5,9 @@ import com.penghuang.home_task.util.MD5Util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * User class.
+ */
 public class User {
     private String name;
 
