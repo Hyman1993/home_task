@@ -36,7 +36,7 @@ public class Roles {
      * @param role
      * @return if exist,return ture, otherwise return false
      */
-    private static boolean isRoleExist(Role role) {
+    public static boolean isRoleExist(Role role) {
         return roles.stream().anyMatch(t -> role.getRoleName().equals(t.getRoleName()));
     }
 

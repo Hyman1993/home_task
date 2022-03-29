@@ -13,4 +13,5 @@ public interface RoleService {
      * delete role.
      */
     public void deleteRole(Role role);
+
 }

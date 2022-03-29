@@ -24,4 +24,5 @@ public class RoleServiceImpl implements RoleService{
     public void deleteRole(Role role) {
         Roles.delete(role);
     }
+
 }

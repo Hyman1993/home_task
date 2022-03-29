@@ -1,5 +1,7 @@
 package com.penghuang.home_task.controller;
 
+import com.penghuang.home_task.dto.Role;
+import com.penghuang.home_task.dto.Role2User;
 import com.penghuang.home_task.dto.User;
 import com.penghuang.home_task.entity.Users;
 import com.penghuang.home_task.exception.SystemException;
@@ -44,6 +46,25 @@ public class UserController {
 
         userService.deleteUser(user);
         return new ResponseEntity<>("Delete user Successfully!", HttpStatus.OK);
+    }
+
+    /**
+     * add role to user
+     * @param role2User
+     * @return
+     */
+    @PutMapping("/role2user")
+    public ResponseEntity<String> addRole2User(@RequestBody Role2User role2User) {
+        Role role = role2User.getRole();
+        User user = role2User.getUser();
+        if(!StringUtils.hasText(role.getRoleName())) {
+            throw new SystemException("roleName can't be empty!");
+        }
+        if(!StringUtils.hasText(user.getName())) {
+            throw new SystemException("userName can't be empty!");
+        }
+        userService.addRole2User(user,role);
+        return new ResponseEntity<>("Add role to user Successfully!", HttpStatus.OK);
     }
 
     // for testing

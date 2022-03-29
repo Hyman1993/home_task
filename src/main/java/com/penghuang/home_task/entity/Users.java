@@ -1,5 +1,6 @@
 package com.penghuang.home_task.entity;
 
+import com.penghuang.home_task.dto.Role;
 import com.penghuang.home_task.dto.User;
 import com.penghuang.home_task.exception.SystemException;
 
@@ -42,4 +43,28 @@ public class Users {
     }
 
 
+    /**
+     * Add role to user
+     * @param user
+     * @param role
+     */
+    public static void addRole2User(User user, Role role) {
+         if(!Roles.isRoleExist(role)) {
+             throw new SystemException("add role to user failed,because the role doesn't exist!" + ", roleName:" + role.getRoleName() );
+         }
+
+         if(!isUserExist(user)) {
+             throw new SystemException("add role to user failed,because the user doesn't exist!" + ", userName:" + user.getName() );
+         }
+
+         User tempUser = users.stream().filter(t -> user.getName().equals(t.getName())).findFirst().get();
+         boolean check = tempUser.getRoles().stream().anyMatch(t -> role.getRoleName().equals(t));
+         if(check) {
+             // do nothing
+             return;
+         }
+
+        tempUser.getRoles().add(role.getRoleName());
+
+    }
 }
