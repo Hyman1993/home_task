@@ -49,13 +49,4 @@ public class RoleController {
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(),"Delete role Successfully!",null), HttpStatus.OK);
     }
 
-    // for testing
-    /**
-     * get users.
-     * @return
-     */
-    @GetMapping("/roles")
-    public ResponseEntity<?> getRoles() {
-        return new ResponseEntity<>(Roles.roles, HttpStatus.OK);
-    }
 }

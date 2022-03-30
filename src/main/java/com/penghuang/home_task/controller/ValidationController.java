@@ -73,13 +73,4 @@ public class ValidationController {
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(),"get all roles from token successfully!",roles), HttpStatus.OK);
     }
 
-    // for testing
-    /**
-     * get users.
-     * @return
-     */
-    @GetMapping("/tokens")
-    public ResponseEntity<?> getTokens() {
-        return new ResponseEntity<>(Tokens.tokens, HttpStatus.OK);
-    }
 }

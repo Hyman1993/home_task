@@ -68,14 +68,4 @@ public class UserController {
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(),"Add role to user Successfully!",null), HttpStatus.OK);
     }
 
-    // for testing
-    /**
-     * get users.
-     * @return
-     */
-    @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
-
-        return new ResponseEntity<>(Users.users, HttpStatus.OK);
-    }
 }
