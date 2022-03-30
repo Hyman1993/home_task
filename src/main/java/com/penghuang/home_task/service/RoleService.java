@@ -7,11 +7,11 @@ public interface RoleService {
     /**
      * save role.
      */
-    public void createRole(Role role);
+    public Role createRole(Role role);
 
     /**
      * delete role.
      */
-    public void deleteRole(Role role);
+    public boolean deleteRole(Role role);
 
 }

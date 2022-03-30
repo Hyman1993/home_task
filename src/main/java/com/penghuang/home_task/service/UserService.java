@@ -8,12 +8,12 @@ public interface UserService {
     /**
      * save user.
      */
-    public void createUser(User user);
+    public User createUser(User user);
 
     /**
      * delete user.
      */
-    public void deleteUser(User user);
+    public boolean deleteUser(User user);
 
     /**
      * add role to user.

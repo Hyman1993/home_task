@@ -1,5 +1,6 @@
 package com.penghuang.home_task.controller;
 
+import com.penghuang.home_task.dto.ResponseDto;
 import com.penghuang.home_task.dto.Role;
 import com.penghuang.home_task.dto.Role2User;
 import com.penghuang.home_task.dto.User;
@@ -26,12 +27,12 @@ public class UserController {
      * @return
      */
     @PostMapping("/user")
-    public ResponseEntity<String> createUser(@RequestBody User user) {
+    public ResponseEntity<ResponseDto> createUser(@RequestBody User user) {
         if(!StringUtils.hasText(user.getName()) || !StringUtils.hasText(user.getPassword()) ) {
             throw new SystemException("username or password can't be empty!");
         }
         userService.createUser(user);
-        return new ResponseEntity<>("Create user Successfully!", HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.CREATED.value(),"Create user Successfully!",null), HttpStatus.CREATED);
     }
 
     /**
@@ -39,13 +40,13 @@ public class UserController {
      * @return
      */
     @DeleteMapping("/user")
-    public ResponseEntity<String> deleteUser(@RequestBody User user) {
+    public ResponseEntity<ResponseDto> deleteUser(@RequestBody User user) {
         if(!StringUtils.hasText(user.getName())) {
             throw new SystemException("username can't be empty!");
         }
 
         userService.deleteUser(user);
-        return new ResponseEntity<>("Delete user Successfully!", HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(),"Delete user Successfully!",null), HttpStatus.OK);
     }
 
     /**
@@ -54,7 +55,7 @@ public class UserController {
      * @return
      */
     @PutMapping("/role2user")
-    public ResponseEntity<String> addRole2User(@RequestBody Role2User role2User) {
+    public ResponseEntity<ResponseDto> addRole2User(@RequestBody Role2User role2User) {
         Role role = role2User.getRole();
         User user = role2User.getUser();
         if(!StringUtils.hasText(role.getRoleName())) {
@@ -64,17 +65,7 @@ public class UserController {
             throw new SystemException("userName can't be empty!");
         }
         userService.addRole2User(user,role);
-        return new ResponseEntity<>("Add role to user Successfully!", HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK.value(),"Add role to user Successfully!",null), HttpStatus.OK);
     }
 
-    // for testing
-    /**
-     * get users.
-     * @return
-     */
-    @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
-
-        return new ResponseEntity<>(Users.users, HttpStatus.OK);
-    }
 }

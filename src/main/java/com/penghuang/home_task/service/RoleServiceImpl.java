@@ -12,8 +12,9 @@ public class RoleServiceImpl implements RoleService{
      * @param role
      */
     @Override
-    public void createRole(Role role) {
+    public Role createRole(Role role) {
         Roles.add(role);
+        return role;
     }
 
     /**
@@ -21,8 +22,9 @@ public class RoleServiceImpl implements RoleService{
      * @param role
      */
     @Override
-    public void deleteRole(Role role) {
+    public boolean deleteRole(Role role) {
         Roles.delete(role);
+        return true;
     }
 
 }

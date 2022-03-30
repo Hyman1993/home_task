@@ -38,7 +38,7 @@ public class Users {
      * @param user
      * @return if exist,return ture, otherwise return false
      */
-    private static boolean isUserExist(User user) {
+    public static boolean isUserExist(User user) {
         return users.stream().anyMatch(t -> user.getName().equals(t.getName()));
     }
 
