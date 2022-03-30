@@ -1,5 +1,6 @@
 package com.penghuang.home_task.exception;
 
+import com.penghuang.home_task.dto.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,8 +20,8 @@ public class GlobalExceptionHandler {
      */
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<?> exceptionHandler(HttpServletRequest httpServletRequest, Exception e) {
-        return new ResponseEntity<>("System error!", HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<ResponseDto> exceptionHandler(HttpServletRequest httpServletRequest, Exception e) {
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(),"System error!",null), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -33,6 +34,6 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = SystemException.class)
     public ResponseEntity<?> myExceptionHandler(HttpServletRequest httpServletRequest, SystemException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(),e.getMessage(),null), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
