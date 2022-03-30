@@ -76,7 +76,7 @@ public class ValidationServiceImpl implements ValidationService {
            List<String> roles = tempUser.getRoles();
            return roles.contains(roleName);
         } else {
-            return  false;
+            throw new SystemException("check role for token failed! token isn't valid!");
         }
     }
 
