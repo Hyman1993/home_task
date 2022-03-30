@@ -48,12 +48,11 @@ public class ValidationServiceImpl implements ValidationService {
      * @param token
      */
     @Override
-    public void invalidate(String token) {
+    public boolean invalidate(String token) {
         boolean checkFlg = TokenUtil.verify(token);
         if(checkFlg) {
            if(Tokens.tokens.contains(token)) {
-               Tokens.tokens.remove(token);
-               return;
+               return Tokens.tokens.remove(token);
            } else {
                throw new SystemException("invalidate token failed! token isn't valid!");
            }

@@ -12,16 +12,18 @@ public class UserServiceImpl implements UserService{
      * save user.
      */
     @Override
-    public void createUser(User user) {
+    public User createUser(User user) {
           Users.add(user);
+          return user;
     }
 
     /**
      * delete user.
      */
     @Override
-    public void deleteUser(User user) {
+    public boolean deleteUser(User user) {
         Users.delete(user);
+        return true;
     }
 
     @Override

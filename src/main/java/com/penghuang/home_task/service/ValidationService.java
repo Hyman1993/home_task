@@ -17,7 +17,7 @@ public interface ValidationService {
      * invalidate expired token
      * @param token
      */
-    public void invalidate(String token);
+    public boolean invalidate(String token);
 
     /**
      * check role
